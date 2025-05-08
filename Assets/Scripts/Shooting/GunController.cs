@@ -1,4 +1,5 @@
 using UnityEngine;
+using UniRx;
 
 namespace TopDown.Shooting
 {
@@ -13,10 +14,27 @@ namespace TopDown.Shooting
         [SerializeField] private Transform bulletFirePoint;
         [SerializeField] private Animator muzzleFlashAnimator;
 
-        //Shoot point
-        //[Header("Shoot Point")]
+        [Header("Ammo")]
+        [SerializeField] private int initialAmmo;
+        [SerializeField] private int clipSize;
 
-        //Bullet prefab
+        public IntReactiveProperty TotalAmmo { get; private set; } = new IntReactiveProperty(0);
+        public IntReactiveProperty CurrentAmmoInClip { get; private set; } = new IntReactiveProperty(0);
+
+        private void Awake()
+        {
+            TotalAmmo.Value = initialAmmo;
+
+            if (initialAmmo <= clipSize)
+            {
+                CurrentAmmoInClip.Value = initialAmmo;
+            }
+            else
+            {
+                CurrentAmmoInClip.Value = clipSize;
+            }
+        }
+
         private void Update()
         {
             cooldownTimer += Time.deltaTime;
@@ -25,12 +43,14 @@ namespace TopDown.Shooting
         private void Shoot()
         {
             if (cooldownTimer < cooldown) return;
+            if (CurrentAmmoInClip.Value <= 0) return;
 
             GameObject bullet = Instantiate(bulletPrefab, bulletFirePoint.position, bulletFirePoint.rotation, null);
             bullet.GetComponent<Projectile>().ShootBullet(bulletFirePoint);
 
             muzzleFlashAnimator.SetTrigger("shoot");
             cooldownTimer = 0;
+            CurrentAmmoInClip.Value--;
         }
 
         #region Input
