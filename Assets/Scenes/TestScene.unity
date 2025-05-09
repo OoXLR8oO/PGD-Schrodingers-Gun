@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 751176072}
   - component: {fileID: 751176071}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1673,7 +1673,7 @@ GameObject:
   - component: {fileID: 1160748855}
   - component: {fileID: 1160748857}
   - component: {fileID: 1160748858}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Obstacles
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
