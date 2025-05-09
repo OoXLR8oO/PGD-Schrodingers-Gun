@@ -2,11 +2,13 @@ using UnityEngine;
 using TMPro;
 using TopDown.Shooting;
 using UniRx;
+using DG.Tweening;
 
 namespace TopDown.UI
 {
     public class AmmoCounter : MonoBehaviour
     {
+        [Header("References")]
         [SerializeField] private TextMeshProUGUI ammoCounterText;
         [SerializeField] private GunController gunController;
 
@@ -14,6 +16,10 @@ namespace TopDown.UI
         private int totalAmmo;
 
         private CompositeDisposable subscriptions = new CompositeDisposable();
+
+        [Header("Pop-Up Effect")]
+        [SerializeField] private Vector2 popupIntensity;
+        [SerializeField] private float popupDuration;
 
         private void OnEnable()
         {
@@ -40,6 +46,7 @@ namespace TopDown.UI
         private void UpdateAmmoCounter(int currentAmmo, int totalAmmo)
         {
             ammoCounterText.text = $"{currentAmmo}/{totalAmmo}";
+            transform.DOPunchScale(popupIntensity, popupDuration).OnComplete(() => transform.DORewind());
         }
     }
 }

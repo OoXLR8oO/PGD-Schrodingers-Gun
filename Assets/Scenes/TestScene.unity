@@ -1658,6 +1658,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoCounterText: {fileID: 1921395793}
   gunController: {fileID: 2110126584}
+  popupIntensity: {x: 0.2, y: 0.2}
+  popupDuration: 0.3
 --- !u!1 &1160748853
 GameObject:
   m_ObjectHideFlags: 0
