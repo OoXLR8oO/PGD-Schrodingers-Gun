@@ -70,7 +70,7 @@ namespace TopDown.Shooting
             // Optionally trigger reload animation/sound here
             Debug.Log("Reloading...");
 
-            yield return new WaitForSeconds(2f); // Wait for 2 seconds
+            yield return new WaitForSeconds(1.5f); // Wait for 2 seconds
 
             int missingAmmo = clipSize - CurrentAmmoInClip.Value;
             int reloadAmmo = Mathf.Min(missingAmmo, TotalAmmo.Value);
