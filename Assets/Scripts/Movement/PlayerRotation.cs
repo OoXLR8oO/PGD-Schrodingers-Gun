@@ -24,10 +24,13 @@ namespace TopDown.Movement
         {
             Vector2 mouseScreenPosition = Mouse.current.position.ReadValue(); // Requires using UnityEngine.InputSystem
             Vector2 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
-            Vector3 legsLookPoint = transform.position + new Vector3(playerMover.CurrentInput.x, playerMover.CurrentInput.y);
+            Vector3 legsLookPoint = transform.position + playerMover.CurrentInput.normalized;
 
             LookAt(torso, mouseWorldPosition);
-            LookAt(legs, Vector3.zero);
+            if (playerMover.CurrentInput != Vector3.zero)
+            {
+                LookAt(legs, legsLookPoint); // Legs face movement direction
+            }
         }
 
         // This only gets called when the mouse moves.
