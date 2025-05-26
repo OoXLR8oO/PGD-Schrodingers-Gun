@@ -35,6 +35,7 @@ namespace TopDown.Shooting
             if (lifeTimer > lifetime)
             {
                 gameObject.SetActive(false);
+                Destroy(gameObject);
             }
         }
 
