@@ -44,6 +44,7 @@ namespace TopDown.Shooting
 
         private void Shoot()
         {
+            if (isReloading) return;
             if (cooldownTimer < cooldown) return;
             if (CurrentAmmoInClip.Value <= 0) return;
 
