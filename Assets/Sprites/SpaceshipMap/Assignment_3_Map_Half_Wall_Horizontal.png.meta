@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Assignment_3_Map_Half_Wall_Horizontal_0: 558483280670573670
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
