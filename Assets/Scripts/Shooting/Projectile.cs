@@ -41,8 +41,6 @@ namespace TopDown.Shooting
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log("Triggered with: " + other.gameObject.name);
-
             if (other.CompareTag("Obstacles"))
             {
                 Destroy(gameObject);
