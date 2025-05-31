@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.Rendering.DebugUI;
 
 namespace TopDown.Movement
 {
@@ -8,9 +7,9 @@ namespace TopDown.Movement
     {
         private Camera mainCamera;
 
-        [Header("Torso & Legs Transform")]
-        [SerializeField] private Transform torso;
-        [SerializeField] private Transform legs;
+        [Header("Pivot Transforms")]
+        [SerializeField] private Transform pivotTorso;
+        [SerializeField] private Transform pivotLegs;
 
         [Header("Mover Reference")]
         [SerializeField] private Mover playerMover;
@@ -22,22 +21,18 @@ namespace TopDown.Movement
 
         private void Update()
         {
-            Vector2 mouseScreenPosition = Mouse.current.position.ReadValue(); // Requires using UnityEngine.InputSystem
+            Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
             Vector2 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
-            Vector3 legsLookPoint = transform.position + playerMover.CurrentInput.normalized;
 
-            LookAt(torso, mouseWorldPosition);
+            // Torso rotates to face mouse
+            LookAt(pivotTorso, mouseWorldPosition);
+
+            // Legs rotate to face movement direction
             if (playerMover.CurrentInput != Vector3.zero)
             {
-                LookAt(legs, legsLookPoint); // Legs face movement direction
+                Vector3 legsLookPoint = transform.position + playerMover.CurrentInput.normalized;
+                LookAt(pivotLegs, legsLookPoint);
             }
         }
-
-        // This only gets called when the mouse moves.
-        //private void OnLook(InputValue value)
-        //{
-        //    Vector2 mousePosition = Camera.main.ScreenToWorldPoint(value.Get<Vector2>());
-        //    LookAt(mousePosition);
-        //}
     }
 }

@@ -6,7 +6,7 @@ namespace TopDown.Movement
     {
         protected void LookAt(Transform rotatedTransform, Vector3 target)
         {
-            float lookAngle = AngleBetweenTwoPoints(transform.position, target) + 90;
+            float lookAngle = AngleBetweenTwoPoints(transform.position, target) - 90;
             rotatedTransform.eulerAngles = new Vector3(0f, 0f, lookAngle);
         }
 
@@ -15,5 +15,4 @@ namespace TopDown.Movement
             return Mathf.Atan2(b.y - a.y, b.x - a.x) * Mathf.Rad2Deg;
         }
     }
-
 }

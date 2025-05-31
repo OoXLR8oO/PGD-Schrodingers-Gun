@@ -16,6 +16,7 @@ namespace TopDown.CameraControl
             Vector3 finalCameraPosition = playerTransform.position + cameraDisplacement;
             finalCameraPosition.z = zPosition;
             transform.position = finalCameraPosition;
+            Camera.main.orthographicSize = 10f;
         }
     }
 }
