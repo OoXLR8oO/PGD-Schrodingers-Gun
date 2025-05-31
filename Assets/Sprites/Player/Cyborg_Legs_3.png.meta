@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cyborg_Legs_3_0: -1435748392248893330
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
