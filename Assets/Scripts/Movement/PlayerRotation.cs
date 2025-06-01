@@ -27,12 +27,13 @@ namespace TopDown.Movement
             // Torso rotates to face mouse
             LookAt(pivotTorso, mouseWorldPosition);
 
-            // Legs rotate to face movement direction
-            if (playerMover.CurrentInput != Vector3.zero)
+            // Legs rotate to face movement direction (only if there's input)
+            if (playerMover.CurrentInput.sqrMagnitude > 0.01f)
             {
                 Vector3 legsLookPoint = transform.position + playerMover.CurrentInput.normalized;
                 LookAt(pivotLegs, legsLookPoint);
             }
         }
+
     }
 }
