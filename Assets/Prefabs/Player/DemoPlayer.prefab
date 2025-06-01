@@ -401,7 +401,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: d81a405893c101643a44ab9235d6594a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -471,6 +471,7 @@ GameObject:
   - component: {fileID: 170210443729876298}
   - component: {fileID: 6533084059816464358}
   - component: {fileID: 9033895666797864609}
+  - component: {fileID: 7887508472988444131}
   m_Layer: 0
   m_Name: DemoPlayer
   m_TagString: Untagged
@@ -657,6 +658,21 @@ MonoBehaviour:
   muzzleFlashAnimator: {fileID: 2233884879416894207}
   initialAmmo: 30
   clipSize: 10
+--- !u!114 &7887508472988444131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7968320551735698432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656e835fc4ab2db49a85c59c86f614de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 5
+  gravity: 9.8
+  jumpCooldown: 1
 --- !u!1 &8213625266207001292
 GameObject:
   m_ObjectHideFlags: 0
