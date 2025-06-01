@@ -16,6 +16,6 @@ public class LegsAnimation : MonoBehaviour
     private void Update()
     {
         Vector3 input = playerMover.CurrentInput;
-        legsAnimator.SetBool("moving", input.sqrMagnitude > 0.01f);
+        legsAnimator.SetBool("moving", input.sqrMagnitude > 0.1f);
     }
 }

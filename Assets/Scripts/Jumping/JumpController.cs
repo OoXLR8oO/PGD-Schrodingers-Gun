@@ -64,6 +64,31 @@ namespace TopDown.Jumping
             }
         }
 
+        public void FallIntoHole()
+        {
+            StartCoroutine(ShrinkAndDisappear());
+        }
+
+        private System.Collections.IEnumerator ShrinkAndDisappear()
+        {
+            float duration = 0.5f;
+            float elapsed = 0f;
+
+            Vector3 originalScale = transform.localScale;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / duration;
+                float scale = Mathf.Lerp(originalScale.x, 0f, t);
+                transform.localScale = new Vector3(scale, scale, 1f);
+                yield return null;
+            }
+
+            Debug.Log("Fell into hole!");
+            gameObject.SetActive(false); // or Destroy(gameObject);
+        }
+
         private void Update()
         {
             HandleJumpPhysics();
