@@ -26,7 +26,7 @@ namespace TopDown.Shooting
             transform.rotation = shootPoint.rotation;
             gameObject.SetActive(true);
 
-            rb2d.AddForce(-transform.up * speed, ForceMode2D.Impulse);
+            rb2d.AddForce(transform.up * speed, ForceMode2D.Impulse);
         }
 
         private void Update()
