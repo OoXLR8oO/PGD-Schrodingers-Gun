@@ -18,7 +18,7 @@ namespace TopDown.Enemy
 
         private void Start()
         {
-            GameObject player = GameObject.Find("Player");
+            GameObject player = GameObject.Find("DemoPlayer");
             if (player != null)
             {
                 playerTransform = player.transform;
