@@ -22,18 +22,18 @@ namespace TopDown.Movement
         private void Update()
         {
             Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
-            Vector2 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
+            Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
+            mouseWorldPosition.z = 0f; // Ensure z is grounded
 
-            // Torso rotates to face mouse
             LookAt(pivotTorso, mouseWorldPosition);
 
-            // Legs rotate to face movement direction (only if there's input)
-            if (playerMover.CurrentInput.sqrMagnitude > 0.01f)
+            Vector3 input = playerMover.CurrentInput;
+            if (input.sqrMagnitude > 0.01f)
             {
-                Vector3 legsLookPoint = transform.position + playerMover.CurrentInput.normalized;
+                Vector3 legsLookPoint = transform.position + input.normalized;
+                legsLookPoint.z = 0f;
                 LookAt(pivotLegs, legsLookPoint);
             }
         }
-
     }
 }

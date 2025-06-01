@@ -1,5 +1,6 @@
 using TopDown.Movement;
 using UnityEngine;
+using UnityEngine.Windows;
 
 [RequireComponent(typeof(Animator))]
 public class LegsAnimation : MonoBehaviour
@@ -14,6 +15,7 @@ public class LegsAnimation : MonoBehaviour
 
     private void Update()
     {
-        legsAnimator.SetBool("moving", playerMover.CurrentInput != Vector3.zero);
+        Vector3 input = playerMover.CurrentInput;
+        legsAnimator.SetBool("moving", input.sqrMagnitude > 0.01f);
     }
 }

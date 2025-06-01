@@ -8,7 +8,8 @@ namespace TopDown.Movement
     {
         private Rigidbody2D rb2d;
         protected Vector3 currentInput;
-        public Vector3 CurrentInput => currentInput;
+        public Vector2 CurrentInput => currentInput;
+
 
         [SerializeField] private float moveSpeed;
 
@@ -19,7 +20,7 @@ namespace TopDown.Movement
 
         private void FixedUpdate()
         {
-            rb2d.linearVelocity = moveSpeed * currentInput * Time.deltaTime;
+            rb2d.linearVelocity = moveSpeed * CurrentInput * Time.deltaTime;
         }
     }
 }
